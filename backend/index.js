@@ -14,7 +14,12 @@ const __dirname = path.resolve();
 // Use CORS middleware
 app.use(
   cors({
-    origin: "http://localhost:5173", // allow requests from your frontend
+    // origin: "http://localhost:5173", // allow requests from your frontend
+    origin:
+      process.env.NODE_ENV === "production"
+        ? "https://your-vercel-domain.vercel.app"
+        : "http://localhost:5173",
+
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
