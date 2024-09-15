@@ -17,7 +17,7 @@ app.use(
     // origin: "http://localhost:5173", // allow requests from your frontend
     origin:
       process.env.NODE_ENV === "production"
-        ? "https://your-vercel-domain.vercel.app"
+        ? "https://mern-product-store-eta.vercel.app/"
         : "http://localhost:5173",
 
     methods: ["GET", "POST", "PUT", "DELETE"],
