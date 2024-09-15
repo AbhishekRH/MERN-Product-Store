@@ -1,4 +1,5 @@
-const apiUrl = process.env.REACT_APP_API_URL;
+// const apiUrl = process.env.REACT_APP_API_URL;
+const apiUrl = "";
 import { create } from "zustand";
 
 export const useProductStore = create((set) => ({
