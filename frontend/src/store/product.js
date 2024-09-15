@@ -1,3 +1,4 @@
+const apiUrl = process.env.REACT_APP_API_URL;
 import { create } from "zustand";
 
 export const useProductStore = create((set) => ({
@@ -7,7 +8,7 @@ export const useProductStore = create((set) => ({
     if (!newProduct.name || !newProduct.price || !newProduct.image) {
       return { success: false, message: "Please fill in all fields!" };
     }
-    const res = await fetch("http://localhost:7777/api/products", {
+    const res = await fetch(`${apiUrl}/api/products`, {
       method: "POST",
       //   mode: "no-cors",
       headers: {
@@ -20,17 +21,14 @@ export const useProductStore = create((set) => ({
     return { success: true, message: "Product created successfully!" };
   },
   fetchProducts: async () => {
-    const res = await fetch("http://localhost:7777/api/products");
+    const res = await fetch(`${apiUrl}/api/products`);
     const data = await res.json();
     set({ products: data.data });
   },
   deleteProduct: async (pid) => {
-    const res = await fetch(
-      `http://localhost:7777/api/products/delete/${pid}`,
-      {
-        method: "DELETE",
-      }
-    );
+    const res = await fetch(`${apiUrl}/api/products/delete/${pid}`, {
+      method: "DELETE",
+    });
     const data = await res.json();
     if (!data.success) {
       return { success: false, message: data.message };
@@ -43,16 +41,13 @@ export const useProductStore = create((set) => ({
     return { success: true, message: data.message };
   },
   updateProduct: async (pid, updatedProduct) => {
-    const res = await fetch(
-      `http://localhost:7777/api/products/update/${pid}`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(updatedProduct),
-      }
-    );
+    const res = await fetch(`${apiUrl}/api/products/update/${pid}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedProduct),
+    });
     const data = await res.json();
     if (!data.success) {
       return { success: false, message: data.message };
