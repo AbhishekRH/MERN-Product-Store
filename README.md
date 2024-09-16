@@ -6,3 +6,11 @@ Link : https://mern-product-store-pau4.onrender.com/
 2. User can toggle between `dark` and `light` themes.
 3. User can `CREATE`, `UPDATE`, `DELETE` products.
 4. The app is responsive and adjusts to different screen sizes!
+
+
+## Tech Stack:
+1. React
+2. Node
+3. Express
+4. MongoDB
+5. Chakra UI
